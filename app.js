@@ -2,6 +2,9 @@ const express=require("express")
 const app=express()
 const userRouter=require("./routes/user.routes")
 
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+
 const Port=6200;
 
 app.set("view engine","ejs")
