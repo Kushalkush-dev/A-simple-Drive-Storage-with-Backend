@@ -2,8 +2,8 @@ const express=require("express")
 const Router=express.Router()
 
 
-Router.get('/test',(req,res)=>{
-  res.send("Using Routes")
+Router.get("/register",(req,res)=>{
+  res.render("register")
 })
 
 
