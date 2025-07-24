@@ -5,6 +5,7 @@ const mongoose=require("mongoose")
 const dbconnection=require("./config/db")
 const bcrypt = require('bcrypt');
 const cookieParser=require("cookie-parser")
+const indexRouter=require("./routes/index.routes")
 dbconnection()
 
 app.use(express.json())
@@ -14,7 +15,7 @@ const Port=6200;
 
 app.set("view engine","ejs")
 
-
+app.use("/",indexRouter)
 app.use("/user",userRouter)
 
 app.get("/user",(req,res)=>{

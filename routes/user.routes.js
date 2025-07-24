@@ -89,4 +89,12 @@ Router.post("/login",
 })
 
 
+
+
+Router.get("/upload",(req,res)=>{
+  res.render("index")
+})
+
+
+
 module.exports=Router
