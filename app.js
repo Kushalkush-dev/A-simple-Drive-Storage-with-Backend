@@ -3,6 +3,7 @@ const app=express()
 const userRouter=require("./routes/user.routes")
 const mongoose=require("mongoose")
 const dbconnection=require("./config/db")
+const bcrypt = require('bcrypt');
 dbconnection()
 
 app.use(express.json())
@@ -15,6 +16,13 @@ app.set("view engine","ejs")
 
 app.use("/user",userRouter)
 
+app.get("/user",(req,res)=>{
+  res.send("<h1>Homepage</h1>")
+})
+
+app.get("/",(req,res)=>{
+  res.send("<h1>Welcome to the Server</h1>")
+})
 app.listen(Port,()=>{  
   console.log(`Server is running on Port :${Port}`);
   }

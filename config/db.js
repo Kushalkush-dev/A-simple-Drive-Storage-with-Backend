@@ -1,9 +1,11 @@
 const mongoose=require("mongoose")
+require("dotenv").config()
+
 
 async function  dbconnection(){
   try {
 
-  await mongoose.connect("mongodb://0.0.0.0/Drive-Storage").then(()=>{
+  await mongoose.connect(process.env.MONGODB_URI).then(()=>{
   console.log("Connected to Database");
   
  })
