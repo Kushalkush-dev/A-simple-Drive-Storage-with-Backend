@@ -4,12 +4,12 @@ const userRouter=require("./routes/user.routes")
 const mongoose=require("mongoose")
 const dbconnection=require("./config/db")
 const bcrypt = require('bcrypt');
-
+const cookieParser=require("cookie-parser")
 dbconnection()
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-
+app.use(cookieParser())
 const Port=6200;
 
 app.set("view engine","ejs")

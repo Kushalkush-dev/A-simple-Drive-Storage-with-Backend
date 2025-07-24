@@ -1,9 +1,10 @@
 const express=require("express")
 const Router=express.Router()
-const {body, validationResult}=require("express-validator")
+const {body, validationResult, cookie}=require("express-validator")
 const userModel=require("../models/user.models")
 const bcrypt = require('bcrypt');
-const jwt=require("jsonwebtoken")
+const jwt=require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
 
 
 Router.get("/register",(req,res)=>{
@@ -82,7 +83,9 @@ Router.post("/login",
     username:username
   },process.env.JWT_ACCESS_TOKEN)
 
-  return res.json({token:token})
+  res.cookie("token",token)
+
+  res.send("<h1>Login Successfull</h1>")
 })
 
 
