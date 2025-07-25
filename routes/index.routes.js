@@ -36,7 +36,7 @@ Router.post("/upload",upload.single("file"),async (req,res)=>{
  const result=await cloudinary.uploader.upload(dataUri,
   {
     folder:"sample",
-    public_id:+ Date.now()+"_"+ req.file.originalname ,
+    public_id:+ Date.now()+"_"+ req.file.originalname,
     resource_type:"auto"
   }
  )
