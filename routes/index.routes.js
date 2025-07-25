@@ -33,7 +33,10 @@ Router.post("/upload",upload.single("file"),async (req,res)=>{
     use_filename:true
   }
  )
-  res.json(result)
+ const downloadfile=result.secure_url.replace('/upload',"/upload/fl_attachment")
+  res.send(`Upload successfull 
+    <img src="${result.secure_url}" width="300" height="200">
+    <a href="${downloadfile}" download target="_blank">download</a>`)
   
 })
 
