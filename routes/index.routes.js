@@ -1,6 +1,7 @@
 const express=require("express")
 const Router=express.Router()
 const multer=require("multer")
+const cloudinary=require("../config/cloudinary")
 
 
 
@@ -24,8 +25,15 @@ Router.get("/home",(req,res)=>{
 
 
 
-Router.post("/upload",upload.single("file"),(req,res)=>{
-  res.json(req.file)
+
+Router.post("/upload",upload.single("file"),async (req,res)=>{
+ const result=await cloudinary.uploader.upload(req.file.path,
+  {
+    folder:"sample",
+    use_filename:true
+  }
+ )
+  res.json(result)
   
 })
 

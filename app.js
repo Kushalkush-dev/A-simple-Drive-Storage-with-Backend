@@ -11,7 +11,6 @@ dbconnection()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
-const Port=6200;
 
 app.set("view engine","ejs")
 
@@ -25,7 +24,7 @@ app.get("/user",(req,res)=>{
 app.get("/",(req,res)=>{
   res.send("<h1>Welcome to the Server</h1>")
 })
-app.listen(Port,()=>{  
-  console.log(`Server is running on Port :${Port}`);
+app.listen(process.env.PORT,()=>{  
+  console.log(`Server is running on Port :${process.env.PORT}`);
   }
 )
