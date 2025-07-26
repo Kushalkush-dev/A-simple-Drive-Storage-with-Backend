@@ -43,6 +43,10 @@ Router.post("/upload",upload.single("file"),async (req,res)=>{
  const downloadfile=result.secure_url.replace('/upload',"/upload/fl_attachment")
   res.send(`Upload successfull 
     <img src="${result.secure_url}" width="300" height="200">
+    <iframe src="${result.secure_url}" width="50%" height="600px"></iframe>
+
+
+   
     <a href="${downloadfile}" download target="_blank">download</a>`)
     console.log(req.file);
     
