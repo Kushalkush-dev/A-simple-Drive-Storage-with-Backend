@@ -5,6 +5,10 @@ const fileSchema=mongoose.Schema({
     type:String,
     required:[true,"patth is required"]
   },
+  disppath:{
+    type:String,
+    required:true
+  },
   originalname:{
      type:String,
      required:[true,"patth is required"]

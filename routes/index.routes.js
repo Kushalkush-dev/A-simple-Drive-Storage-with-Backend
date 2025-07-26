@@ -63,7 +63,9 @@ const downloadfile=result.secure_url.replace('/upload',"/upload/fl_attachment")
 const newfile=await Filemodel.create({
   path:downloadfile,
   originalname:req.file.originalname,
-  user:req.user._id
+  user:req.user._id,
+  disppath:result.secure_url
+
 })
 
 res.redirect("home")

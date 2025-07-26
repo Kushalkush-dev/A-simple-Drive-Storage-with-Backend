@@ -22,6 +22,7 @@
  <div id="filesmenu" class="flex flex-col gap-2">
   <% files.forEach((file)=>{ %>
   <div class="bg-gray-700 flex h-full rounded-lg p-1 m-2 justify-between">
+  <img src="<%=file.disppath%>" width="200px" height="200px">
   <h1 class="text-white text-xl"><%=file.originalname%></h1>
   <a href="<%=file.path%>" download="<%=file.originalname%>"
     class="text-blue-500 mr-0 text-xl">
