@@ -6,15 +6,42 @@
   <title>Register Page</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
 
 
 </head>
-<body class="bg-gray-600 dark:bg-gray-800 flex items-center justify-center w-full h-screen">
 
-<form 
+
+<body class="w-full h-screen bg-gray-600 dark:bg-gray-800">
+  
+ <button id="uploadmenu" class="p-3 bg-green-500 hover:bg-green-600 rounded font-bold text-white">Upload Files</button>
+ 
+ <div id="filesmenu" class="flex flex-col gap-2">
+  <% files.forEach((file)=>{ %>
+  <div class="bg-gray-700 flex h-full rounded-lg p-1 m-2 justify-between">
+  <h1 class="text-white text-xl"><%=file.originalname%></h1>
+  <a href="<%=file.path%>" download="<%=file.originalname%>"
+    class="text-blue-500 mr-0 text-xl">
+    <i class="ri-download-2-line"></i>
+  </a>
+  </div>
+ <% }) %> 
+ 
+ </div>
+ 
+ 
+
+<div class="flex items-center justify-center h-screen bg-blur relative">
+   
+  <form 
 action="/upload" 
 method="post"
-enctype="multipart/form-data">
+enctype="multipart/form-data"
+class="hidden"
+id="uploadform">
 
   
 <div class="flex items-center justify-center w-screen max-w-sm">
@@ -31,12 +58,45 @@ enctype="multipart/form-data">
 </div> 
 <button type="submit" class="p-3 font-semibold  bg-blue-600 text-white mt-4 hover:bg-blue-800 rounded-lg">Upload</button>
 
+</button>
 </form>
+<button id="exit" class="text-3xl text-red-600 absolute top-55 right-100 hidden">
+  <i class="ri-close-circle-line"></i>
+
+</div>
 
 
 
 
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+
+  <script>
+    
+
+      const uploadmenubtn=document.getElementById("uploadmenu")
+      const exitbtn=document.getElementById("exit")
+
+      
+      uploadmenubtn.addEventListener("click",()=>{
+        uploadmenubtn.classList.add("hidden")
+        document.getElementById("filesmenu").classList.add("hidden")
+        document.getElementById("uploadform").classList.remove("hidden")
+         exitbtn.classList.remove("hidden")
+      })
+
+      
+       
+        exitbtn.addEventListener("click",()=>{
+        uploadmenubtn.classList.remove("hidden")
+        document.getElementById("filesmenu").classList.remove("hidden")
+        document.getElementById("uploadform").classList.add("hidden")
+        exitbtn.classList.add("hidden")
+        })
+
+
+  
+  </script>
   
 </body>
 </html>
